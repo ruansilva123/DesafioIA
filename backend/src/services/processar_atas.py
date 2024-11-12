@@ -4,7 +4,7 @@ import pdfplumber
 import os
 
 
-def get_attendants_names(routers = []):
+def processar_atas(routers = []):
     
     if not routers:
         raise HTTPException(
@@ -25,4 +25,12 @@ def get_attendants_names(routers = []):
 
 # if __name__ == "__main__":
 #     teste = os.path.abspath("docs\\dia 1 - resumo.pdf")
-#     get_attendants_names([teste])
+#     processar_atas([teste])
+
+
+"""
+TESTE:
+
+pasta atual: PS C:\Users\ruanc\OneDrive\Documentos\GitHub\DesafioIA\backend>
+executar: python .\backend\src\services\attendants_names.py
+"""
