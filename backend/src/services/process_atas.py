@@ -4,7 +4,7 @@ import pdfplumber
 import os
 
 
-def processar_atas(filename = None) -> str:
+def get_text(filename = None) -> str:
     
     try:
         router = os.path.abspath(f'files\\{filename}')
@@ -25,10 +25,10 @@ def processar_atas(filename = None) -> str:
 
 
 # if __name__ == "__main__":
-#     processar_atas("dia 1 - resumo.pdf")
+#     get_text("dia 1 - resumo.pdf")
 
 
-# TESTE:
+# TEST:
 
-# pasta atual: PS C:\Users\ruanc\OneDrive\Documentos\GitHub\DesafioIA\backend>
-# executar: python .\backend\src\services\attendants_names.py
+# current path: PS C:\Users\ruanc\OneDrive\Documentos\GitHub\DesafioIA\backend>
+# execute: python .\backend\src\services\attendants_names.py

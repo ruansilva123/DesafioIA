@@ -6,7 +6,7 @@ import google.generativeai as genai
 genai.configure(api_key="")
 
 
-def procurar_atendentes(text = None):
+def find_attendants(text = None):
 
     if not text:
         raise HTTPException(
