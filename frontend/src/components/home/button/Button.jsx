@@ -1,9 +1,10 @@
 import React from "react";
 import * as S from './ButtonStyles'
-const Button = () =>{
+
+const Button = ({onClick, children}) =>{
     return(
-        <S.ButtonContainer>
-            Gerar Relatório
+        <S.ButtonContainer onClick={onClick}>
+            {children} 
         </S.ButtonContainer>
     )
 }
