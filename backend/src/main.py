@@ -5,13 +5,7 @@ from pydantic import BaseModel
 from fastapi.responses import JSONResponse
 import os
 
-
 app = FastAPI()
-
-
-class uploadDataRequest(BaseModel):
-    dir_audios: str
-    dir_ata: str
 
 UPLOAD_DIR = "./files"
 
