@@ -4,33 +4,31 @@ import pdfplumber
 import os
 
 
-def processar_atas(routers = []):
+def processar_atas(filename = None) -> str:
     
-    if not routers:
+    try:
+        router = os.path.abspath(f'files\\{filename}')
+
+    except:
         raise HTTPException(
-            detail = {'error' : 'Nenhuma ATA foi encontrada!'},
-            status_code = status.HTTP_400_BAD_REQUEST
+            detail = {'error' : f'O {filename} arquivo não foi encontrado!'},
+            status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
         )
 
-    pdfs_content = ""
+    pdf_content = ""
 
-    for router in routers: 
+    with pdfplumber.open(router) as pdf:
+        for page in pdf.pages:
+            pdf_content += page.extract_text() + "\n"
 
-        with pdfplumber.open(router) as pdf:
-            for page in pdf.pages:
-                pdfs_content += page.extract_text() + "\n"
-
-    return pdfs_content
+    return pdf_content
 
 
 # if __name__ == "__main__":
-#     teste = os.path.abspath("docs\\dia 1 - resumo.pdf")
-#     processar_atas([teste])
+#     processar_atas("dia 1 - resumo.pdf")
 
 
-"""
-TESTE:
+# TESTE:
 
-pasta atual: PS C:\Users\ruanc\OneDrive\Documentos\GitHub\DesafioIA\backend>
-executar: python .\backend\src\services\attendants_names.py
-"""
+# pasta atual: PS C:\Users\ruanc\OneDrive\Documentos\GitHub\DesafioIA\backend>
+# executar: python .\backend\src\services\attendants_names.py
