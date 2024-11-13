@@ -1,0 +1,5 @@
+{
+    "appService.showBuildDuringDeployPrompt": false,
+    "appService.defaultWebAppToDeploy": "/subscriptions/5799216a-31e2-4351-8643-0d63cb74ce06/resourceGroups/QMAI-MVP-DEV/providers/Microsoft.Web/sites/QMAIReceiver",
+    "appService.deploySubpath": "."
+}
