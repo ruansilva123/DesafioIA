@@ -3,11 +3,13 @@ from fastapi import status
 import pdfplumber
 import os
 
+from core.settings import FILES_PATH
+
 
 def get_text(filename = None) -> str:
     
     try:
-        router = os.path.abspath(f'files\\{filename}')
+        router = os.path.abspath(f'{FILES_PATH}\\{filename}')
 
     except:
         raise HTTPException(
@@ -25,7 +27,7 @@ def get_text(filename = None) -> str:
 
 
 # if __name__ == "__main__":
-#     get_text("dia 1 - resumo.pdf")
+#     get_text("dia 1 - resumo copy.pdf")
 
 
 # TEST:
