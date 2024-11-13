@@ -1,25 +1,25 @@
-from fastapi import FastAPI, HTTPException, status, Depends, File, UploadFile
-from db.database import engine, get_db
-from typing import Any, List
-from pydantic import BaseModel
+from fastapi import FastAPI, HTTPException, status, Depends, UploadFile
 from fastapi.responses import JSONResponse
+from typing import Any, List
 import os
+
+from core.settings import FILES_PATH
+from db.models import Ata, Call
+from db.database import engine, get_db, Base
+
+
+Base.metadata.create_all(bind=engine)
+
 
 app = FastAPI()
 
-UPLOAD_DIR = "./files"
 
-@app.get("/")
-async def hello_world() -> str:
-    return "Hello world"
-
-
-@app.post("/upload_data")
+@app.post("/upload_data", status_code = status.HTTP_200_OK)
 async def upload_data(files: List[UploadFile], db: Any = Depends(get_db)):
     try:
         saved_files = []
         for file in files:
-            file_location = os.path.join(UPLOAD_DIR, file.filename)
+            file_location = os.path.join(FILES_PATH, file.filename)
             
             with open(file_location, "wb") as f:
                 f.write(await file.read())
